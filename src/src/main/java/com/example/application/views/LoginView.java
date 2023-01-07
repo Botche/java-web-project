@@ -1,6 +1,7 @@
 package com.example.application.views;
 
 import com.example.application.data.constants.GlobalConstants;
+import com.example.application.data.entity.Users;
 import com.example.application.data.service.AuthService;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
@@ -16,9 +17,11 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.*;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @Route("login")
+@RouteAlias(value = "")
 @PageTitle(GlobalConstants.LOGIN_PAGE_TITLE)
 @AnonymousAllowed
 public class LoginView extends VerticalLayout {

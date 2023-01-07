@@ -47,7 +47,7 @@ public class MainLayout extends AppLayout {
         listLink.setHighlightCondition(HighlightConditions.sameLocation());
 
         VerticalLayout sidebar = new VerticalLayout(
-                listLink
+            listLink
         );
 
         Users authenticatedUser = authService.getAuthenticatedUser();
