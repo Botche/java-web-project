@@ -16,12 +16,11 @@ import com.vaadin.flow.router.Route;
 import javax.annotation.security.PermitAll;
 
 @PermitAll
-@Route(value = "dashboard", layout = MainLayout.class)
 @PageTitle(GlobalConstants.DASHBOARD_PAGE_TITLE)
 public class DashboardView extends VerticalLayout {
 
-    private ContactsService contactsService;
-    private CompaniesService companiesService;
+    private final ContactsService contactsService;
+    private final CompaniesService companiesService;
 
     public DashboardView(ContactsService contactsService, CompaniesService companiesService) {
         this.contactsService = contactsService;

@@ -18,16 +18,15 @@ import com.vaadin.flow.router.Route;
 import javax.annotation.security.PermitAll;
 
 @PermitAll
-@Route(value="", layout = MainLayout.class)
 @PageTitle(GlobalConstants.CONTACTS_PAGE_TITLE)
 public class ListView extends VerticalLayout {
     Grid<Contact> grid = new Grid<>(Contact.class);
     TextField filterText = new TextField();
     ContactForm form;
 
-    private CompaniesService companiesService;
-    private ContactsService contactsService;
-    private StatusesService statusesService;
+    private final CompaniesService companiesService;
+    private final ContactsService contactsService;
+    private final StatusesService statusesService;
 
     public ListView(CompaniesService companiesService,
                     ContactsService contactsService,

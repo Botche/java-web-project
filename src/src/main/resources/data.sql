@@ -62,3 +62,7 @@ INSERT INTO "CONTACT" VALUES
 (58, 1, 'bryan.shaw@ha.ee', 'Bryan', 'Shaw', 9, 1),
 (59, 1, 'essie.adams@iliat.cw', 'Essie', 'Adams', 8, 5),
 (60, 1, 'gary.osborne@do.ga', 'Gary', 'Osborne', 7, 5);
+
+INSERT INTO "USERS" VALUES
+(1, 1, TRUE, 'c361c3e336063cef419ef2d66127a84bde58e38a', '3Y+|eH7c4q/E(>gmd+FC#4r=Wik_]T+I', 0, 'user'),
+(2, 1, true, '847aaf6a3bdcc3fe9a3d6ccd87edb423f62ce0e1', ']]/qK|J,TzP[R8VaT:Tlla=,)4@&#6;t', 1, 'admin');
