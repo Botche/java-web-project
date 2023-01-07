@@ -2,6 +2,11 @@
 
 The project is about employees in a few companies and their statuses in them. The users can do CRUD operations on the employees and the admins can view the the pie chart of all employees distributed by companies.
 
+Default users for the application: 
+(username: password)
+ - user: user
+ - admin: admin
+
 The application gives the possibility to login, register functionality. To use the application the user needs to log in first. 
 All forms have validation and notifications for errors or successful event.
 
@@ -29,8 +34,3 @@ In the application there are two roles: user and admin. The user role can view t
 
 The admin role has the same functionality as the user but in addition he has the rights to see the Dashboard page where he can check the pie chart of all employees.
 ![dashboard-page](https://user-images.githubusercontent.com/47752724/211171373-36387206-941d-4cb3-a722-efe72ac667e4.png)
-
-Default users for the application: 
-(username: password)
- - user: user
- - admin: admin
