@@ -11,7 +11,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @Route("login") 
-@PageTitle("Login")
+@PageTitle(GlobalConstants.LOGIN_PAGE_TITLE)
 @AnonymousAllowed
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
@@ -25,7 +25,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
 		login.setAction("login"); 
 
-		add(new H1("High Tech Comp"), login);
+		add(new H1(GlobalConstants.COMPANY_NAME), login);
 	}
 
 	@Override

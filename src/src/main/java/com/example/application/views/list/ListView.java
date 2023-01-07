@@ -1,5 +1,6 @@
 package com.example.application.views.list;
 
+import com.example.application.data.constants.GlobalConstants;
 import com.example.application.data.entity.Contact;
 import com.example.application.data.service.CrmService;
 import com.example.application.views.MainLayout;
@@ -16,7 +17,7 @@ import javax.annotation.security.PermitAll;
 
 @PermitAll
 @Route(value="", layout = MainLayout.class)
-@PageTitle("Contacts | High Tech Comp")
+@PageTitle(GlobalConstants.CONTACTS_PAGE_TITLE)
 public class ListView extends VerticalLayout {
     Grid<Contact> grid = new Grid<>(Contact.class);
     TextField filterText = new TextField();

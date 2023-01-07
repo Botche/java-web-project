@@ -23,7 +23,7 @@ public class MainLayout extends AppLayout {
     }
 
     private void createHeader() {
-        H1 logo = new H1("High Tech Comp");
+        H1 logo = new H1(GlobalConstants.COMPANY_NAME);
         logo.addClassNames("text-l", "m-m");
 
         Button logout = new Button("Log out", e -> securityService.logout());

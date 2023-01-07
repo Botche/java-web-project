@@ -1,5 +1,6 @@
 package com.example.application.views;
 
+import com.example.application.data.constants.GlobalConstants;
 import com.example.application.data.service.CrmService;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.charts.Chart;
@@ -14,8 +15,8 @@ import com.vaadin.flow.router.Route;
 import javax.annotation.security.PermitAll;
 
 @PermitAll
-@Route(value = "dashboard", layout = MainLayout.class) 
-@PageTitle("Dashboard | High Tech Comp")
+@Route(value = "dashboard", layout = MainLayout.class)
+@PageTitle(GlobalConstants.DASHBOARD_PAGE_TITLE)
 public class DashboardView extends VerticalLayout {
     private final CrmService service;
 
