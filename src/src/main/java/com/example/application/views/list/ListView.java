@@ -2,7 +2,9 @@ package com.example.application.views.list;
 
 import com.example.application.data.constants.GlobalConstants;
 import com.example.application.data.entity.Contact;
-import com.example.application.data.service.CrmService;
+import com.example.application.data.service.CompaniesService;
+import com.example.application.data.service.ContactsService;
+import com.example.application.data.service.StatusesService;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -22,10 +24,18 @@ public class ListView extends VerticalLayout {
     Grid<Contact> grid = new Grid<>(Contact.class);
     TextField filterText = new TextField();
     ContactForm form;
-    CrmService service;
 
-    public ListView(CrmService service) {
-        this.service = service;
+    private CompaniesService companiesService;
+    private ContactsService contactsService;
+    private StatusesService statusesService;
+
+    public ListView(CompaniesService companiesService,
+                    ContactsService contactsService,
+                    StatusesService statusesService) {
+        this.companiesService = companiesService;
+        this.contactsService = contactsService;
+        this.statusesService = statusesService;
+
         addClassName("list-view");
         setSizeFull();
         configureGrid();
@@ -46,7 +56,7 @@ public class ListView extends VerticalLayout {
     }
 
     private void configureForm() {
-        form = new ContactForm(service.findAllCompanies(), service.findAllStatuses());
+        form = new ContactForm(companiesService.findAllCompanies(), statusesService.findAllStatuses());
         form.setWidth("25em");
         form.addListener(ContactForm.SaveEvent.class, this::saveContact);
         form.addListener(ContactForm.DeleteEvent.class, this::deleteContact);
@@ -54,13 +64,13 @@ public class ListView extends VerticalLayout {
     }
 
     private void saveContact(ContactForm.SaveEvent event) {
-        service.saveContact(event.getContact());
+        contactsService.saveContact(event.getContact());
         updateList();
         closeEditor();
     }
 
     private void deleteContact(ContactForm.DeleteEvent event) {
-        service.deleteContact(event.getContact());
+        contactsService.deleteContact(event.getContact());
         updateList();
         closeEditor();
     }
@@ -115,6 +125,6 @@ public class ListView extends VerticalLayout {
 
 
     private void updateList() {
-        grid.setItems(service.findAllContacts(filterText.getValue()));
+        grid.setItems(contactsService.findAllContacts(filterText.getValue()));
     }
 }
