@@ -64,6 +64,8 @@ Contact:
  - status: Status (foreign key to Status)
  - email: string
 
+---
+
 ### Repositories 
  - CompanyRepository
  - ContactRepository
@@ -72,6 +74,8 @@ Contact:
  
  The repositories are our way to access the data in the database. They are inheritating JpaRepository<T, D>.
  
+ ---
+ 
  ### Services
   - AuthService
   - CompaniesService
@@ -79,6 +83,8 @@ Contact:
   - StatusesService
 
 In the services we have the logic for getting the information, saving and deleting. Also, we have validation there.
+  
+  ---
   
 ### Views
  - ListView
@@ -90,6 +96,8 @@ In the services we have the logic for getting the information, saving and deleti
  - RegisterView
  
 I have used Bean for the update functionality of contact. When you click any row of the table the Bean is reading the contact and populating him. After the save buttong is clicked the Bean is writing to the object and then we can save it.
+ 
+ ---
  
 ### Contants
  - ExceptionMessages
