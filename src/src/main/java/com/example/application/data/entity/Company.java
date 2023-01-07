@@ -1,5 +1,6 @@
 package com.example.application.data.entity;
 
+import com.example.application.data.constants.Queries;
 import org.hibernate.annotations.Formula;
 
 import java.util.LinkedList;
@@ -18,7 +19,7 @@ public class Company extends AbstractEntity {
     @Nullable
     private List<Contact> employees = new LinkedList<>();
 
-    @Formula("(select count(c.id) from Contact c where c.company_id = id)")
+    @Formula(Queries.EMPLOYEES_COUNT_QUERY)
     private int employeeCount;
 
     public String getName() {

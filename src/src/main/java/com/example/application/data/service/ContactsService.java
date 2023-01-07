@@ -1,5 +1,6 @@
 package com.example.application.data.service;
 
+import com.example.application.data.constants.ExceptionMessages;
 import com.example.application.data.entity.Contact;
 import com.example.application.data.repository.ContactRepository;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class ContactsService {
 
     public void saveContact(Contact contact) {
         if (contact == null) {
-            System.err.println("Contact is null. Are you sure you have connected your form to the application?");
+            System.err.println(ExceptionMessages.SAVE_CONTACT_NULL_EXCEPTION_MESSAGE);
             return;
         }
 
