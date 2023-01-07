@@ -58,7 +58,7 @@ public class ContactForm extends FormLayout {
 
   // Events
   public static abstract class ContactFormEvent extends ComponentEvent<ContactForm> {
-    private Contact contact;
+    private final Contact contact;
 
     protected ContactFormEvent(ContactForm source, Contact contact) {
       super(source, false);
