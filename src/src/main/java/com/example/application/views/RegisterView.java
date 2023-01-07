@@ -1,13 +1,12 @@
 package com.example.application.views;
 
 import com.example.application.data.constants.GlobalConstants;
+import com.example.application.data.constants.Notifications;
 import com.example.application.data.service.AuthService;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
@@ -59,21 +58,19 @@ public class RegisterView extends VerticalLayout {
 
 	private void register(String username, String password1, String password2) {
 		if (username.trim().isEmpty()) {
-			Notification.show("Enter an username");
+			Notifications.GenerateErrorNotification(Notifications.ENTER_USERNAME_MESSAGE);
 		} else if (password1.isEmpty()) {
-			Notification.show("Enter a password");
+			Notifications.GenerateErrorNotification(Notifications.ENTER_PASSWORD_MESSAGE);
 		} else if (!password1.equals(password2)) {
-			Notification.show("Passwords don't match");
+			Notifications.GenerateErrorNotification(Notifications.MISMATCHING_PASSWORDS_MESSAGE);
 		} else {
 			try {
 				authService.register(username, password1);
 				UI.getCurrent().navigate("login");
-				Notification.show("Check your username.");
+
+				Notifications.GenerateSuccessNotification(Notifications.SUCCESSFUL_REGISTER_MESSAGE);
 			} catch (Exception e) {
-				Notification notification = Notification.show("Something went wrong!");
-				notification.setPosition(Notification.Position.TOP_END);
-				notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
-				System.out.println(e.getMessage());
+				Notifications.GenerateErrorNotification(Notifications.SOMETHING_WRONG_MESSAGE);
 			}
 		}
 	}

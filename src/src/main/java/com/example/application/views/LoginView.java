@@ -1,23 +1,19 @@
 package com.example.application.views;
 
 import com.example.application.data.constants.GlobalConstants;
-import com.example.application.data.entity.Users;
+import com.example.application.data.constants.Notifications;
 import com.example.application.data.service.AuthService;
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.login.LoginForm;
-import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.*;
-import com.vaadin.flow.server.VaadinSession;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteAlias;
+import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @Route("login")
@@ -57,9 +53,7 @@ public class LoginView extends VerticalLayout {
 						password.getValue()
 					);
 				} catch (Exception e) {
-					Notification notification = Notification.show("Username or Password are not correct!");
-					notification.setPosition(Notification.Position.TOP_END);
-					notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+					Notifications.GenerateErrorNotification(Notifications.USERNAME_PASSWORD_WRONG_MESSAGE);
 				}
 			}),
 			registerLink
@@ -68,12 +62,14 @@ public class LoginView extends VerticalLayout {
 
 	private void login(String username, String password) throws AuthService.AuthException {
 		if (username.trim().isEmpty()) {
-			Notification.show("Enter an username");
+			Notifications.GenerateErrorNotification(Notifications.ENTER_USERNAME_MESSAGE);
 		} else if (password.isEmpty()) {
-			Notification.show("Enter a password");
+			Notifications.GenerateErrorNotification(Notifications.ENTER_PASSWORD_MESSAGE);
 		} else {
 			authService.authenticate(username, password);
 			UI.getCurrent().navigate("/contacts");
+
+			Notifications.GenerateSuccessNotification(Notifications.SUCCESSFUL_LOGIN_MESSAGE);
 		}
 	}
 }

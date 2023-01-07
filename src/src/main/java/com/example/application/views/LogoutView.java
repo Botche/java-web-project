@@ -1,5 +1,6 @@
 package com.example.application.views;
 
+import com.example.application.data.constants.Notifications;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -17,5 +18,7 @@ public class LogoutView extends Composite<VerticalLayout> {
         RouteConfiguration.forApplicationScope().setRoute("", LoginView.class);
         RouteConfiguration.forApplicationScope().setRoute("login", LoginView.class);
         RouteConfiguration.forApplicationScope().setRoute("register", RegisterView.class);
+
+        Notifications.GenerateSuccessNotification(Notifications.SUCCESSFUL_LOGOUT_MESSAGE);
     }
 }

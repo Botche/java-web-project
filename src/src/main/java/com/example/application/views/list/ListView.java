@@ -1,6 +1,7 @@
 package com.example.application.views.list;
 
 import com.example.application.data.constants.GlobalConstants;
+import com.example.application.data.constants.Notifications;
 import com.example.application.data.entity.Contact;
 import com.example.application.data.service.CompaniesService;
 import com.example.application.data.service.ContactsService;
@@ -64,12 +65,16 @@ public class ListView extends VerticalLayout {
         contactsService.saveContact(event.getContact());
         updateList();
         closeEditor();
+
+        Notifications.GenerateSuccessNotification(Notifications.SUCCESSFUL_CREATE_CONTACT_MESSAGE);
     }
 
     private void deleteContact(ContactForm.DeleteEvent event) {
         contactsService.deleteContact(event.getContact());
         updateList();
         closeEditor();
+
+        Notifications.GenerateSuccessNotification(Notifications.SUCCESSFUL_DELETED_CONTACT_MESSAGE);
     }
 
     private void configureGrid() {
