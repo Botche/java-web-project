@@ -47,7 +47,6 @@ public class AuthService {
 
     private void configureRoutes(Roles role) {
         removeAuthenticationRoutes();
-        List<RouteData> routes = RouteConfiguration.forSessionScope().getAvailableRoutes();
         getAuthorizedRoutes(role)
                 .forEach(route ->
                         RouteConfiguration.forSessionScope().setRoute(
@@ -65,7 +64,7 @@ public class AuthService {
         routes.add(new AuthorizedRoute("", "Home", ListView.class));
         routes.add(new AuthorizedRoute("contacts", "Home", ListView.class));
         routes.add(new AuthorizedRoute("logout", "Logout", LogoutView.class));
-        System.out.println(role);
+
         if (role.equals(Roles.ADMIN)) {
             routes.add(new AuthorizedRoute("dashboard", "Admin", DashboardView.class));
         }
